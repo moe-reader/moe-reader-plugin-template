@@ -7,6 +7,7 @@ import {
 } from 'vite-plugin-qiankun/dist/helper';
 import i18next from './locales';
 import i18NextVue from 'i18next-vue';
+import 'uno.css'
 
 let app: App | null = null;
 

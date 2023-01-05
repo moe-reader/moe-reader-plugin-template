@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import qiankun from 'vite-plugin-qiankun';
 import env from './env.js';
+import unocss from 'unocss/vite';
 
 const { port, name } = env;
 
@@ -25,5 +26,6 @@ export default defineConfig({
     qiankun(name, {
       useDevMode: true,
     }),
+    unocss()
   ],
 });

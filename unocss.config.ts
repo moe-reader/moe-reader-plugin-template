@@ -5,13 +5,38 @@ import {
   presetUno,
   transformerDirectives,
   transformerVariantGroup,
-} from 'unocss'
+} from 'unocss';
 
 export default defineConfig({
-  shortcuts: [
-    ['btn', 'px-4 py-1 rounded inline-block bg-teal-600 text-white cursor-pointer hover:bg-teal-700 disabled:cursor-default disabled:bg-gray-600 disabled:opacity-50'],
-    ['icon-btn', 'text-[0.9em] inline-block cursor-pointer select-none opacity-75 transition duration-200 ease-in-out hover:opacity-100 hover:text-teal-600'],
+  rules: [
+    [
+      'drag',
+      {
+        '-webkit-app-region': 'drag',
+      },
+    ],
+    [
+      'no-drag',
+      {
+        '-webkit-app-region': 'no-drag',
+      },
+    ],
   ],
+  shortcuts: [
+    [
+      'btn',
+      'px-4 py-1 rounded inline-block bg-teal-600 text-white cursor-pointer hover:bg-primary-700 disabled:cursor-default disabled:bg-gray-600 disabled:opacity-50 no-drag',
+    ],
+    [
+      'icon-btn',
+      'p-0 text-[0.9em] inline-block cursor-pointer select-none transition duration-200 ease-in-out hover:opacity-100 hover:color-primary no-drag',
+    ],
+  ],
+  theme: {
+    colors: {
+      primary: 'var(--color-primary)',
+    },
+  },
   presets: [
     presetUno(),
     presetAttributify(),
@@ -20,8 +45,5 @@ export default defineConfig({
       warn: true,
     }),
   ],
-  transformers: [
-    transformerDirectives(),
-    transformerVariantGroup(),
-  ],
-})
+  transformers: [transformerDirectives(), transformerVariantGroup()],
+});

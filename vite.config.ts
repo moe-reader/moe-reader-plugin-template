@@ -3,6 +3,8 @@ import vue from '@vitejs/plugin-vue';
 import qiankun from 'vite-plugin-qiankun';
 import env from './env.js';
 import unocss from 'unocss/vite';
+import Components from 'unplugin-vue-components/vite';
+import AutoImport from 'unplugin-auto-import/vite';
 
 const { port, name } = env;
 
@@ -26,6 +28,13 @@ export default defineConfig({
     qiankun(name, {
       useDevMode: true,
     }),
-    unocss()
+    unocss(),
+    AutoImport({
+      imports: ['vue'],
+      dts: true,
+    }),
+    Components({
+      dts: true,
+    }),
   ],
 });
